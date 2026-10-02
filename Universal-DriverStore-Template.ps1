@@ -87,11 +87,6 @@ $HardwareIDs = @(
     # ------------------------
     # *** ADD YOUR DRIVER ID HERE ***
     # ------------------------
-    #We are looking for the Realtek USB Ethernet GBE 8153
-    "VID_0BDA&PID_8153",
-    "VID_0BDA&PID_8153&REV_3111",
-    "USB\\VID_0BDA&PID_8153",
-    "USB\\VID_0BDA&PID_8153&REV_3111"
 )
 
 # Log file location
