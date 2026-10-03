@@ -78,4 +78,4 @@ ConfigMgr is picky. Play by the rules:
 ## Further readings
 
 - more to come, this is just initial scaffolding for now.
-- this is a rewrite and migration from my archived repo that is nearly a decade old now. I have learned some things.
+- this is a rewrite and migration from my [archived repo](https://github.com/the-wittch/SCCM-Helpers) that is nearly a decade old now. I have learned some things.
