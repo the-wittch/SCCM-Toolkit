@@ -1,5 +1,7 @@
 # SCCM Toolkit
 
+[![PowerShell](https://github.com/the-wittch/SCCM-Toolkit/actions/workflows/powershell.yml/badge.svg)](https://github.com/the-wittch/SCCM-Toolkit/actions/workflows/powershell.yml)
+
 Home base for the ConfigMgr scripts I ship. Apps, drivers, baselines, task sequence helpers.
 
 ## Where things live
