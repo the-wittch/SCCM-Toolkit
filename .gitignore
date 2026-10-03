@@ -34,3 +34,6 @@ Thumbs.db
 # Logs
 *.log
 **/Logs/
+
+# Optional offline copy of PSScriptAnalyzer (see tools/validation/lib/README.md)
+tools/validation/lib/PSScriptAnalyzer/

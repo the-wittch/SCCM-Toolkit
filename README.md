@@ -76,17 +76,22 @@ ConfigMgr is picky. Play by the rules:
 
 ## Linting (keep the scripts honest)
 
-We use [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer). Errors fail CI; warnings yell at you but don't block (unless you ask).
+We use [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer) when it's available. Errors fail CI; warnings yell at you but don't block (unless you ask).
 
 ```powershell
-# Same check GitHub Actions runs
+# Prefers: bundled lib → already installed → gallery install → syntax-only fallback
 ./tools/validation/Invoke-ScriptAnalysis.ps1
+
+# Locked-down box, no third-party modules: parse check only (built into PowerShell)
+./tools/validation/Invoke-ScriptAnalysis.ps1 -Mode Syntax
 
 # Get strict about warnings too
 ./tools/validation/Invoke-ScriptAnalysis.ps1 -FailOnWarning
 ```
 
-Settings live in `PSScriptAnalyzerSettings.psd1`. Workflow is `.github/workflows/powershell.yml`.
+Can't `Install-Module` at work? On a machine that *can*, run `./tools/validation/Save-PSScriptAnalyzer.ps1`, then copy `tools/validation/lib/PSScriptAnalyzer` over. The validator looks there first. Details in `tools/validation/lib/README.md`.
+
+Settings: `PSScriptAnalyzerSettings.psd1`. CI (full analyzer on a runner that *can* install modules): `.github/workflows/powershell.yml`.
 
 
 ## Further readings

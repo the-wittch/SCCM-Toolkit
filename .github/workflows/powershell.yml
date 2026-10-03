@@ -32,4 +32,5 @@ jobs:
 
       - name: Analyze scripts
         shell: pwsh
-        run: ./tools/validation/Invoke-ScriptAnalysis.ps1 -SkipInstall
+        # CI already installed the module above. Require full analyzer (no silent syntax fallback).
+        run: ./tools/validation/Invoke-ScriptAnalysis.ps1 -Mode Analyzer -SkipInstall
