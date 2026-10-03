@@ -15,7 +15,7 @@ baselines/        # Configuration items & baselines
 collections/      # Queries and maintenance
 task-sequences/   # TS scripts and group notes
 shared/           # Reusable functions, modules, logging
-tools/            # Admin scripts you run (inventory, client SDK, lint) — see tools/README.md
+tools/            # Admin scripts you run (inventory, client SDK, site, lint) — see tools/README.md
 reports/          # SQL / reports
 docs/             # Conventions and runbooks
 ```

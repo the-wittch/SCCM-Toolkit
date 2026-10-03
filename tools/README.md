@@ -25,6 +25,26 @@ Add new tools here and update this list.
 ./tools/client/Start-CcmApplicationInstall.ps1 -Name '*Company Portal*' -WhatIf
 ```
 
+## Site admin (ConfigMgr console module)
+
+Needs the console installed on the box (or at least the ConfigurationManager module). Set site once per session if you want:
+
+```powershell
+$env:SCCM_SITE_CODE = 'XYZ'
+$env:SCCM_PROVIDER_MACHINE = 'sccm.contoso.com'
+```
+
+| Script | What it does |
+|--------|----------------|
+| [site/Get-CcmMaintenanceWindow.ps1](site/Get-CcmMaintenanceWindow.ps1) | Maintenance windows by collection, by device, or `-All` |
+
+```powershell
+./tools/site/Get-CcmMaintenanceWindow.ps1 -CollectionName 'Patching-*'
+./tools/site/Get-CcmMaintenanceWindow.ps1 -ComputerName LAT-JSMITH01
+./tools/site/Get-CcmMaintenanceWindow.ps1 -All |
+    Format-Table CollectionName, Name, TypeName, Enabled, ScheduleText
+```
+
 ## Validation
 
 | Script | What it does |
