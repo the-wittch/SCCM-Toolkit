@@ -1,0 +1,36 @@
+# Editor leftovers
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Secrets. Seriously. Don't commit these.
+.env
+*.pfx
+*.p12
+*.key
+*credentials*
+*secret*
+
+# Packages / build droppings
+*.zip
+*.cab
+*.intunewin
+*.msi
+*.exe
+!tools/**/*.ps1
+
+# Big source blobs stay on the share. Scripts/notes can stay.
+**/source/**
+!**/source/.gitkeep
+!**/source/**/*.ps1
+!**/source/**/*.xml
+!**/source/**/*.json
+!**/source/**/*.txt
+!**/source/**/*.md
+
+# Logs
+*.log
+**/Logs/
