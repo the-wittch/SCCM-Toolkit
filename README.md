@@ -15,7 +15,7 @@ baselines/        # Configuration items & baselines
 collections/      # Queries and maintenance
 task-sequences/   # TS scripts and group notes
 shared/           # Reusable functions, modules, logging
-tools/            # Stuff YOU run (inventory, client SDK, lint) — see tools/README.md
+tools/            # Admin scripts you run (inventory, client SDK, lint) — see tools/README.md
 reports/          # SQL / reports
 docs/             # Conventions and runbooks
 ```
@@ -26,6 +26,7 @@ docs/             # Conventions and runbooks
 |----------|---------|
 | Add a new app or driver package | Copy `applications/_template` or `drivers/_template` — details in [docs/conventions.md](docs/conventions.md) |
 | Find an admin / helper script | [tools/README.md](tools/README.md) |
+| UI++ task sequence GUIs | [task-sequences/ui++/README.md](task-sequences/ui++/README.md) |
 | Remember naming & detection rules | [docs/conventions.md](docs/conventions.md) |
 | Lint before you push | `./tools/validation/Invoke-ScriptAnalysis.ps1` |
 

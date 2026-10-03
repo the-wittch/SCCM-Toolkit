@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Sample: ask for a computer name and set OSDComputerName.
+
+  Do NOT use a variable named ComputerName — that fights the Windows env var.
+-->
+<UIpp Title="OSD - Computer Name" Color="#002147" SidebarTextColor="#FFFFFF" Flat="True">
+  <Actions>
+    <Action Type="Input" Name="ComputerNameInput" Title="Name this PC" ShowCancel="True">
+      <InputInfo Color="#333333">
+        3–15 characters. Letters, numbers, and hyphen only. No spaces.
+      </InputInfo>
+      <InputText
+        Question="Computer name"
+        Prompt="e.g. LAT-JSMITH01"
+        Variable="OSDComputerName"
+        ForceCase="Upper"
+        RegEx="^[A-Z0-9-]{3,15}$"
+        Hint="Use 3-15 characters: A-Z, 0-9, hyphen"
+        Required="True" />
+    </Action>
+
+    <Action Type="Info" Name="ComputerNameSummary" Title="Confirm" ShowBack="True" ShowCancel="True">
+      <![CDATA[
+        This PC will be named:<br/><br/>
+        <b>%OSDComputerName%</b><br/><br/>
+        Hit Continue if that looks right. Back to fix it.
+      ]]>
+    </Action>
+  </Actions>
+</UIpp>

@@ -1,10 +1,10 @@
-# How we keep this from turning into a junk drawer
+# Conventions
 
-Root README stays short on purpose. This file is the “how we work” notes.
+Root README stays short. This file is the how-we-work notes.
 
 ## One package, one folder
 
-Don't mix three products in one directory. Future You is tired.
+Don't mix three products in one directory.
 
 ```
 drivers/Realtek-USB-NIC-8153/
@@ -62,10 +62,11 @@ ConfigMgr is picky:
 - `drivers/_template/detection/Detect-DriverStore.ps1` — HWID + min version.
   - Default `Active` (bound driver). Optional `Store` mode.
   - `$DebugMode` defaults `$false`. Empty `$HardwareIDs` fails on purpose.
+- `task-sequences/ui++/configs/` — UI++ sample XMLs (computer name, site/OU, app tree). See that folder’s README.
 
 ## Shared code
 
-Copy/paste is fine twice. Third time, extract to `shared/functions/`. If it grows up, make a module under `shared/modules/`.
+Copy/paste is fine twice. Third time, extract to `shared/functions/`. Bigger helpers can become a module under `shared/modules/`.
 
 ## Docs vs README vs this file
 

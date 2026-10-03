@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Sample: pick site + device role, build OSDDomainOUName and a name prefix.
+
+  Replace Contoso LDAP paths / site codes with yours.
+  Pair with ui++.ComputerName.xml (or merge the Input dialogs) if you want
+  prefix + free-text name in one flow.
+-->
+<UIpp Title="OSD - Site &amp; OU" Color="#002147" SidebarTextColor="#FFFFFF" Flat="True">
+  <Actions>
+    <Action Type="Input" Name="SiteRoleInput" Title="Where is this PC going?" ShowCancel="True">
+      <InputChoice
+        Question="Site"
+        Variable="SiteCode"
+        AlternateVariable="SiteOu"
+        Required="True"
+        Default="HQ"
+        Sort="False">
+        <!-- Value = short code; AlternateValue = OU fragment under Contoso/Computers -->
+        <Choice Option="Headquarters" Value="HQ" AlternateValue="OU=HQ" />
+        <Choice Option="Remote office" Value="REMOTE" AlternateValue="OU=Remote" />
+        <Choice Option="Lab / break-fix" Value="LAB" AlternateValue="OU=Lab" />
+      </InputChoice>
+
+      <InputChoice
+        Question="Device role"
+        Variable="DeviceRole"
+        Required="True"
+        Default="Laptop"
+        Sort="False">
+        <Choice Option="Laptop" Value="Laptop" />
+        <Choice Option="Desktop" Value="Desktop" />
+        <Choice Option="Kiosk / shared" Value="Kiosk" />
+      </InputChoice>
+    </Action>
+
+    <!-- Build the DN. Edit the DC= bits for your domain. -->
+    <Action Type="TSVar" Name="OSDDomainOUName">
+      LDAP://%SiteOu%,OU=%DeviceRole%,OU=Computers,OU=Contoso,DC=contoso,DC=com
+    </Action>
+
+    <!-- Handy if a later dialog builds OSDComputerName = prefix + asset tag -->
+    <Action Type="TSVar" Name="NamePrefix">%SiteCode%-%DeviceRole%-</Action>
+
+    <Action Type="Info" Name="SiteOuSummary" Title="Confirm" ShowBack="True" ShowCancel="True">
+      <![CDATA[
+        <b>Site:</b> %SiteCode%<br/>
+        <b>Role:</b> %DeviceRole%<br/>
+        <b>OU:</b> %OSDDomainOUName%<br/>
+        <b>Name prefix:</b> %NamePrefix%<br/><br/>
+        Continue if the OU path looks correct.
+      ]]>
+    </Action>
+  </Actions>
+</UIpp>

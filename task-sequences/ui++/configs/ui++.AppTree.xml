@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Sample: AppTree that feeds Install Application / Install Package steps.
+
+  Application Name= must match ConfigMgr exactly (spelling and case).
+  Replace the Contoso placeholders with your real app names / CI unique IDs.
+
+  Default variable bases:
+    Applications → XApplications01, XApplications02, ...
+    Packages     → XPackages001, XPackages002, ...
+  Point your TS "Install Application" step at base variable XApplications.
+-->
+<UIpp Title="OSD - Optional Software" Color="#002147" SidebarTextColor="#FFFFFF" Flat="True">
+  <Software>
+    <!-- Id = your pick (unique in this file). Name = ConfigMgr application name. -->
+    <Application
+      Id="Contoso-CompanyPortal"
+      Label="Company Portal"
+      Name="Contoso - Company Portal" />
+    <Application
+      Id="Contoso-Edge"
+      Label="Microsoft Edge"
+      Name="Contoso - Microsoft Edge" />
+    <Application
+      Id="Contoso-7Zip"
+      Label="7-Zip"
+      Name="Contoso - 7-Zip" />
+    <Application
+      Id="Contoso-VLC"
+      Label="VLC Media Player"
+      Name="Contoso - VLC" />
+    <Application
+      Id="Contoso-VSCode"
+      Label="Visual Studio Code"
+      Name="Contoso - Visual Studio Code" />
+
+    <!-- Packages: PkgId = package ID, Label = Program name (exact) -->
+    <Package
+      Id="Contoso-LegacyRuntime"
+      Label="Install"
+      PkgId="CON00001" />
+  </Software>
+
+  <Actions>
+    <Action
+      Type="AppTree"
+      Name="AppPicker"
+      Title="Choose software"
+      ShowCancel="True"
+      ApplicationVariableBase="XApplications"
+      PackageVariableBase="XPackages">
+      <SoftwareSets>
+        <Set Name="Default">
+          <SoftwareGroup Id="grp-required" Label="Required" Required="True">
+            <SoftwareRef Id="Contoso-CompanyPortal" Required="True" />
+            <SoftwareRef Id="Contoso-Edge" Default="True" />
+          </SoftwareGroup>
+
+          <SoftwareGroup Id="grp-optional" Label="Optional">
+            <SoftwareRef Id="Contoso-7Zip" Default="True" />
+            <SoftwareRef Id="Contoso-VLC" />
+            <SoftwareRef Id="Contoso-VSCode" />
+          </SoftwareGroup>
+
+          <SoftwareGroup Id="grp-packages" Label="Packages (legacy)">
+            <SoftwareRef Id="Contoso-LegacyRuntime" />
+          </SoftwareGroup>
+        </Set>
+      </SoftwareSets>
+    </Action>
+
+    <Action Type="Info" Name="AppSummary" Title="Software selected" ShowBack="True" ShowCancel="True">
+      <![CDATA[
+        Selected apps land in <b>XApplications##</b> and packages in <b>XPackages###</b>.<br/><br/>
+        Make sure your task sequence Install Application / Install Package steps
+        use those base variable names.
+      ]]>
+    </Action>
+  </Actions>
+</UIpp>

@@ -3,18 +3,18 @@
 #
 #
 # Modes:
-#   Active  - device is using the matching signed driver (use this 99% of the time)
-#   Store   - package is sitting in the DriverStore (installed, maybe not bound yet)
+#   Active  - device is using the matching signed driver (preferred)
+#   Store   - package is in the DriverStore (may not be bound yet)
 #
 # Setup:
 # 1. Uncomment / add your HWID(s) below.
-# 2. Set $minVersion to the oldest version you'll accept.
-# 3. Leave DetectionMode on Active unless you have a reason not to.
+# 2. Set $minVersion to the minimum acceptable version.
+# 3. Leave DetectionMode on Active unless you need Store.
 # 4. Paste into ConfigMgr app detection (PowerShell). Runs as SYSTEM.
 #
 # Exit codes:
-#   0 + prints "Installed"  = we're good
-#   1                       = not found, too old, or you forgot to set a HWID
+#   0 + prints "Installed"  = detected
+#   1                       = not found, too old, or $HardwareIDs is empty
 #
 ###############################################################################
 
@@ -23,7 +23,7 @@
 # ----------------------
 # DEBUG MODE
 # ----------------------
-# Leave this false when you paste into ConfigMgr. ISE flips it on for local poking.
+# Leave false for ConfigMgr. Auto-enabled in PowerShell ISE.
 $DebugMode = $false
 
 if ($null -ne $psISE) {
@@ -46,10 +46,10 @@ function SafeExit {
 }
 
 # ----------------------
-# Config — turn these knobs, leave the rest alone
+# Config
 # ----------------------
 
-# Oldest version we're willing to call "good enough"
+# Minimum acceptable driver version
 $minVersion = [version]'1.0.0.0'
 
 # Active = what's bound on the device (preferred)
@@ -108,7 +108,7 @@ function Write-DetectLog {
         Add-Content -LiteralPath $logPath -Value $line -ErrorAction Stop
     }
     catch {
-        # Log write failed. Whatever — detection still has to answer yes/no.
+        # Logging failed; detection still needs to return a result.
         Write-Verbose $line
     }
 }

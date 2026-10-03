@@ -1,7 +1,6 @@
 # Local PSScriptAnalyzer drop spot
 
-Some fine establishments won't let you `Install-Module` from the gallery on a box.
-Drop a copy of the module here instead:
+If you can't `Install-Module` from the gallery on a box, drop a copy of the module here instead:
 
 ```
 tools/validation/lib/PSScriptAnalyzer/

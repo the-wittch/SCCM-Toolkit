@@ -15,7 +15,7 @@
     Start install even if InstallState is already Installed.
 
 .PARAMETER Priority
-    CCM priority string. Normal is fine for humans. Foreground if you're impatient.
+    CCM priority string. Default is Normal.
 
 .PARAMETER EnforcePreference
     0 = Immediate (default), 1 = NonBusinessHours, 2 = AdminSchedule.

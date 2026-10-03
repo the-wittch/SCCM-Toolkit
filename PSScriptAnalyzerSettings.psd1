@@ -13,8 +13,7 @@
         # Fine in short toolkit scripts. Tighten this up if we grow real modules.
         'PSUseShouldProcessForStateChangingFunctions'
 
-        # BOM yelling is mostly a Windows PowerShell 5.1 / Notepad thing.
-        # These scripts are UTF-8 without BOM and that is fine.
+        # UTF-8 without BOM is fine here; skip the BOM requirement.
         'PSUseBOMForUnicodeEncodedFile'
     )
 

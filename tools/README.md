@@ -2,7 +2,7 @@
 
 Scripts **you** run on a workstation or jump box. Not client detection/install payloads — those live under `applications/` and `drivers/`.
 
-Add new tools here. Keep this list honest when you do.
+Add new tools here and update this list.
 
 ## Inventory
 
@@ -36,4 +36,4 @@ Details for offline installs: [validation/lib/README.md](validation/lib/README.m
 
 ## Export / import
 
-Empty on purpose for now. Drop ConfigMgr export/import helpers here when they show up.
+Placeholder for ConfigMgr export/import helpers.
