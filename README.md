@@ -74,6 +74,20 @@ ConfigMgr is picky. Play by the rules:
   - `Store` mode if you only care that the package landed in the DriverStore.
   - `$DebugMode` starts at `$false`. Empty `$HardwareIDs` fails on purpose so you don't deploy a blank template by accident.
 
+## Linting (keep the scripts honest)
+
+We use [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer). Errors fail CI; warnings yell at you but don't block (unless you ask).
+
+```powershell
+# Same check GitHub Actions runs
+./tools/validation/Invoke-ScriptAnalysis.ps1
+
+# Get strict about warnings too
+./tools/validation/Invoke-ScriptAnalysis.ps1 -FailOnWarning
+```
+
+Settings live in `PSScriptAnalyzerSettings.psd1`. Workflow is `.github/workflows/powershell.yml`.
+
 
 ## Further readings
 
