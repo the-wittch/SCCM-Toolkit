@@ -251,7 +251,7 @@ function Test-StoreDriver {
     }
 
     foreach ($driver in $storeDrivers) {
-        $infPath = [string]$driver.Driver
+        $infPath = [string]$driver.OriginalFileName
         if ([string]::IsNullOrWhiteSpace($infPath) -or -not (Test-Path -LiteralPath $infPath)) {
             continue
         }
